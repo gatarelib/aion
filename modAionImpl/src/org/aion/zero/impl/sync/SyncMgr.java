@@ -201,9 +201,9 @@ public final class SyncMgr {
 
         if (_showStatus) {
             syncSs = new Thread(
-                new TaskShowStatus(this.start, INTERVAL_SHOW_STATUS, this.chain, this.networkStatus,
-                    statics, _printReport, _reportFolder,
-                    AionLoggerFactory.getLogger(LogEnum.P2P.name())), "sync-ss");
+                    new TaskShowStatus(this.start, INTERVAL_SHOW_STATUS, this.chain, this.networkStatus, statics,
+                            _printReport, _reportFolder, this.p2pMgr, this.peerStates,
+                            AionLoggerFactory.getLogger(LogEnum.P2P.name())), "sync-ss");
             syncSs.start();
         }
 
