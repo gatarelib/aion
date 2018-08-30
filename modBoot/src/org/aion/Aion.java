@@ -52,6 +52,7 @@ import org.aion.zero.impl.cli.Cli;
 import org.aion.zero.impl.config.CfgAion;
 import org.slf4j.Logger;
 
+import static org.aion.zero.impl.cli.Cli.ReturnType;
 import static java.lang.System.exit;
 import static org.aion.crypto.ECKeyFac.ECKeyType.ED25519;
 import static org.aion.crypto.HashUtil.H256Type.BLAKE2B_256;
@@ -83,9 +84,9 @@ public class Aion {
 
         // Reads CLI (must be after the cfg.fromXML())
         if (args != null && args.length > 0) {
-            int ret = new Cli().call(args, cfg);
-            if (ret != 2) {
-                exit(ret);
+            ReturnType ret = new Cli().call(args, cfg);
+            if (ret != ReturnType.RUN) {
+                exit(ret.getValue());
             }
         }
 
